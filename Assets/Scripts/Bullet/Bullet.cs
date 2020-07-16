@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using ObjectPooling;
 using UnityEngine;
 
@@ -8,13 +8,14 @@ namespace Bullet
     public class Bullet : MonoBehaviour
     {
         private PoolObjectType _type = PoolObjectType.None;
-        [HideInInspector] public int damage = 0;
+        [HideInInspector] public int damage = 0; 
 
         public void InitBullet(PoolObjectType type, int iDamage)
         {
             _type = type;
             damage = iDamage;
             Cooling();
+            transform.eulerAngles = new Vector3(0,0,GameObject.Find("Player").transform.eulerAngles.z);
         }
 
         private void Cooling()

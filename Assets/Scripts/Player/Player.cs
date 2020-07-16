@@ -39,11 +39,12 @@ namespace Player
             _myBody = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
             _main = Camera.main;
-
+            transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = currentWeapon.currentWeaponSpr;
             CurrentHeath = Heath;
 
             EventDispatcher.Instance.OnPlayerShot.AddListener(PlayerShot);
             EventDispatcher.Instance.OnEnemyHitPlayer.AddListener(UpdateHeath);
+            EventDispatcher.Instance.OnEnemyHitPlayer.AddListener(UpdateHeathBar);
         }
 
         private void Update()
@@ -98,6 +99,7 @@ namespace Player
             if (other.CompareTag("Enemy") || other.CompareTag("EnemyBullet"))
             {
                 EventDispatcher.Instance.OnEnemyHitPlayer.Invoke();
+
             }
         }
 
@@ -107,11 +109,18 @@ namespace Player
             {
                 StartCoroutine(HitBoxOff());
                 CurrentHeath--;
+
             }
         }
 
         private void UpdateHeathBar()
         {
+            //  if (_hit)
+            // {
+                
+            // }
+         //   Destroy(GameObject.Find("LifeBox").transform.GetChild(0).gameObject);
+            
         }
     }
 }

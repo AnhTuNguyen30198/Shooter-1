@@ -44,10 +44,10 @@ namespace Enemy
             _nextShot = false;
 
             if (_isInRange) robotWeapon.Shoot(gun1, ref _nextTimeOfFire1);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(1f);
 
             if (_isInRange) robotWeapon.Shoot(gun2, ref _nextTimeOfFire2);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(1f);
 
             _nextShot = true;
         }
